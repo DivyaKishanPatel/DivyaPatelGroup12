@@ -1,4 +1,4 @@
-package gofishcard;
+package ca.sheridancollege.project;
 
 /**
  *
