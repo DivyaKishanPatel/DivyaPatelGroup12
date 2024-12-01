@@ -8,42 +8,60 @@ package ca.sheridancollege.project;
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
+ * @author Hinal
+ * @author Kriti Nov 29, 2024
  */
-public abstract class Player {
+public class Player {
+    private String name;
+    private ArrayList<Card> hand;
+    private ArrayList<Card> collectedSets;
 
-    private String name; //the unique name for this player
-
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
     public Player(String name) {
         this.name = name;
+        this.hand = new ArrayList<>();
+        this.collectedSets = new ArrayList<>();
     }
 
-    /**
-     * @return the player name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Ensure that the playerID is unique
-     *
-     * @param name the player name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+    public ArrayList<Card> getHand() {
+        return hand;
     }
 
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    public abstract void play();
+    public void addCard(Card card) {
+        hand.add(card);
+    }
 
+    public void removeCard(Card card) {
+        hand.remove(card);
+    }
+
+    public void collectSet(Card card) {
+        collectedSets.add(card);
+    }
+
+    public ArrayList<Card> getCollectedSets() {
+        return collectedSets;
+    }
+
+    public boolean hasCard(String rank) {
+        for (Card card : hand) {
+            if (((GoFishCard) card).getRank().equals(rank)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasCards() {
+        return !hand.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return name + " with cards: " + hand.toString();
+    }
 }
+
