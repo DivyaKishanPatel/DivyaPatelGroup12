@@ -8,8 +8,9 @@ package gofishcard;
 /**
  * A class to be used as the base Card class for the project. Must be general enough to be instantiated for any Card
  * game. Students wishing to add to the code should remember to add themselves as a modifier.
- *
+ * 
  * @author divya
+ * date: 30-11-2024
  */
 public abstract class Card {
     // Abstract method to represent a card as a string (could be for any card game)
